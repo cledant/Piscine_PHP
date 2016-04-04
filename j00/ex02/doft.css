@@ -1,0 +1,320 @@
+BODY {
+		background-color : #505050;
+}
+
+p {
+	letter-spacing : 0.9px;
+}
+
+DIV.title {
+		resize : none;
+		overflow : visible;
+		background-color : #909090;
+		margin-top : 25px;
+		margin-left : 240px;
+		width : 1425px;
+		height : 140px;
+		border-radius : 20px;
+		border: 1px solid black;
+		box-shadow : 5px 5px 5px black;
+}
+
+DIV.title_1 {
+		resize : none;
+		overflow : visible;
+		position : absolute;
+		margin : 10px 0px 0px 10px;
+		height : 120px;
+		width : 420px;		
+}
+
+DIV.title_2 {
+		resize : none;
+		overflow : visible;
+		position : relative;
+		padding : 10px 0px 0px 1390px;
+		height : 25px;
+		width : 25px;		
+}
+
+DIV.title_3 {
+		resize : none;
+		overflow : visible;
+		position : absolute;
+		padding: 70px 0px 0px 1390px;
+		height : 25px;
+		width : 25px;		
+}
+
+DIV.title_4 {
+		resize : none;
+		overflow : visible;
+		position : absolute;
+		margin : -20px 0px 0px 1150px;
+		height : 150px;
+		width : 240px;		
+}
+
+DIV.col1 {
+		resize : none;
+		overflow : visible;
+		background-color : #909090;
+		margin-top : 20px;
+		margin-left : 270px;
+		width : 145px;
+		height : 425px;
+		border-radius : 20px;
+		border: 1px solid black;
+		box-shadow : 5px 5px 5px black;
+}
+
+DIV.col1_1 {
+		resize : none;
+		overflow : visible;
+		position : relative;
+		padding : 15px 0px 0px 35px;
+		height : 70px;
+		width : 70px;		
+}
+
+DIV.col1_2 {
+		resize : none;
+		overflow : visible;
+		position : relative;
+		padding : 10px 0px 0px 35px;
+		height : 70px;
+		width : 70px;		
+}
+
+DIV.col1_3 {
+		resize : none;
+		overflow : visible;
+		position : relative;
+		padding : 10px 0px 0px 35px;
+		height : 70px;
+		width : 70px;
+}
+
+DIV.col1_4 {
+		resize : none;
+		overflow : visible;
+		position : relative;
+		padding : 10px 0px 0px 35px;
+		height : 70px;
+		width : 70px;		
+}
+
+DIV.col1_5 {
+		resize : none;
+		overflow : visible;
+		position : absolute;
+		padding : 10px 0px 0px 35px;
+		height : 70px;
+		width : 70px;		
+}
+
+DIV.center {
+		resize : none;
+		overflow : visible;
+		background-color : #909090;
+		margin-top : -427px;
+		margin-left : 450px;
+		width : 1020px;
+		height : 580px;
+		border-radius : 20px;
+		border: 1px solid black;
+		box-shadow : 5px 5px 5px black;
+}
+
+DIV.center_1 {
+		resize : none;
+		overflow : visible;
+		position : absolute;
+		padding : 10px 0px 0px 10px;
+		height : 70px;
+		width : 70px;
+}
+
+DIV.center_2 {
+		resize : none;
+		overflow : visible;
+		position : absolute;
+		margin : 310px 0px 0px 790px;
+		height : 180px;
+		width : 200px;
+}
+
+DIV.center_3 {
+		resize : none;
+		overflow : visible;
+		position : absolute;
+		margin : 320px 0px 0px 320px;
+		height : 240px;
+		width : 160px;
+}
+
+DIV.col2 {
+		resize : none;
+		overflow : visible;
+		background-color : #909090;
+		margin-top : -582px;
+		margin-left : 1505px;
+		width : 145px;
+		height : 425px;
+		border-radius : 20px;
+		border: 1px solid black;
+		box-shadow : 5px 5px 5px black;
+}
+
+DIV.col2_1 {
+		resize : none;
+		overflow : visible;
+		position : relative;
+		padding : 15px 0px 0px 35px;
+		height : 70px;
+		width : 70px;		
+}
+
+DIV.col2_2 {
+		resize : none;
+		overflow : visible;
+		position : absolute;
+		padding : 30px 0px 0px 35px;
+		height : 70px;
+		width : 70px;		
+}
+
+DIV.col2_3 {
+		resize : none;
+		overflow : visible;
+		position : absolute;
+		background-image : url("resources/brick.jpg");
+		background-repeat : repeat;
+		margin : 100px 0px 0px 13px;
+		height : 70px;
+		width : 120px;
+}
+
+DIV.text {
+		resize : none;
+		overflow : visible;
+		position : absolute;
+		background-color : lightgreen;
+		margin-top : 80px;
+		margin-left : 200px;
+		width : 520px;
+		height : 170px;
+		border-radius : 20px;
+		border: 1px solid black;
+		box-shadow : 5px 5px 5px black;
+}
+
+P.popup {
+		font-family : "Arial";
+		font-weight : lighter;
+		margin-top : 20px;
+		margin-left : 20px;
+		display : inline;
+		font-size : 16px;
+}
+
+P.big {
+		font-family : "Times New Roman", Times, serif;
+		margin-top : 20px;
+		margin-left : 20px;
+		display : inline;
+		font-size : 36px;
+}
+
+P.shadow {
+		font-family : "Arial";
+		font-weight : lighter;
+		text-shadow : 2px 2px 2px red;
+		margin-top : 20px;
+		margin-left : 20px;
+		display : inline;
+		font-size : 16px;
+}
+
+P.italic {
+		font-style : italic;
+		font-family : "Arial";
+		font-weight : lighter;
+		margin-top : 20px;
+		margin-left : 20px;
+		display : inline;
+		font-size : 16px;
+}
+
+INPUT.text {
+		type = "text";
+		margin-left : 20px;
+		font-size : 15px;
+}
+
+BUTTON.rep {
+		type = "button";
+}
+
+IMG.doft {
+		height : 120px;
+		width : 420px;
+}
+
+IMG.loupe {
+		height : 150px;
+		width : 240px;
+}
+
+IMG.reload {
+		height : 25px;
+		width: 25px;
+}
+
+IMG.quit {
+		height : 25px;
+		width : 25px;
+}
+
+IMG.arrow {
+		height : 70px;
+		width : 70px;
+}
+
+IMG.hand {
+		height : 70px;
+		width : 70px;
+}
+
+IMG.eye {
+		border : 5px solid red;
+		border-radius : 5px;
+		height : 70px;
+		width : 70px;
+}
+
+IMG.tools {
+		height : 70px;
+		width : 70px;
+}
+
+IMG.chat {
+		height : 70px;
+		width : 70px;
+}
+
+IMG.cluster {
+		position : absolute;
+		height : 560px;
+		width : 1000px;
+}
+
+IMG.book {
+		height : 90px;
+		width : 70px;
+}
+
+IMG.towel {
+		height : 60px;
+		width : 70px;
+}

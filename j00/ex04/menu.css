@@ -1,0 +1,26 @@
+#menu {
+    text-align: center;
+    font: Arial;
+    color: white;
+    font-size: 30px;
+}
+
+#menu li {
+    border: 10px solid orange;
+    background-color: orange;
+    display : inline-block;
+}
+
+#menu ul {
+    position: absolute;
+    padding-left: 50px;
+    left: -999em;
+}
+
+#menu li:hover ul {
+    left: auto;
+}
+
+#menu img {
+    display: block;
+}
