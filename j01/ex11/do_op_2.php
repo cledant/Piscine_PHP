@@ -80,39 +80,97 @@ if (count($calc) == 2)
 	echo $ret."\n";
 	exit ;
 }
-$calc = explode("+", $argv[1]);
-$calc = array_filter($calc);
-$ret = 0;
-if (count($calc) == 2)
+$sign_1 = 1;
+$sign_2 = 1;
+$sign_op = 1;
+$first = 0;
+$word = 1;
+$inc = 0;
+$split = str_split($argv[1], 1);
+foreach($split as $k)
 {
-	foreach($calc as $k)
+	if ($word == 1 && is_numeric($k) == 0 && $inc == 0 && $first == 0)
 	{
-		if (is_numeric($k) == 0)
+		$first = 1;
+		if ($k == "+")
+			$sign_1 = 1;
+		else if ($k == "-")
+			$sign_1 = -1;
+		else
 		{
 			echo "Syntax Error\n";
 			exit;
 		}
-		$ret += $k;
 	}
-	echo $ret."\n";
-	exit ;
+	else if ($word == 1 && is_numeric($k) == 0 && $inc != 0)
+	{
+		$word = 2;
+		$inc = 0;
+		$first = 0;
+		if ($k == "+")
+			$sign_op = 1;
+		else if ($k == "-")
+			$sign_op = -1;
+		else
+		{
+			echo "Syntax Error\n";
+			exit;
+		}
+	}
+	else if ($word == 2 && is_numeric($k) == 0 && $inc == 0 && $first == 0)
+	{
+		$first = 1;
+		if ($k == "+")
+			$sign_2 = 1;
+		else if ($k == "-")
+			$sign_2 = -1;
+		else
+		{
+			echo "Syntax Error\n";
+			exit;
+		}
+	}
+	else if (is_numeric($k) == 1)
+		$inc += 1;
+	else
+	{
+		echo "Syntax Error\n";
+		exit;
+	}
 }
-$calc = explode("-", $argv[1]);
-$calc = array_filter($calc);
-$ret = 0;
-if (count($calc) == 2)
+$inc = 1;
+foreach ($argv as $k)
 {
-	foreach($calc as $k)
+	$str = trim($k, "+");
+	$array = explode("+", $str);
+	$array = array_filter($array);
+	$argv[$inc] = implode(" ",$array);
+	$str = trim($argv[$inc], "-");
+	$array = explode("-", $str);
+	$array = array_filter($array);
+	$argv[$inc] = implode(" ",$array);
+	$inc += 1;
+}
+$str = trim($argv[1], " ");
+$array = explode(" ", $str);
+$array = array_filter($array);
+if (count($array) != 2)
+	echo "Syntax Error\n";
+else
+{
+	$count = 1;
+	foreach ($array as $k)
 	{
-		if (is_numeric($k) == 0)
+		if ($count == 1)
 		{
-			echo "Syntax Error\n";
-			exit;
+			$count = 2;
+			$ret = $sign_1 * $k;
 		}
-		$ret -= $k;
+		else if ($count == 2)
+			$ret = $ret + $sign_op * $sign_2 * $k;
 	}
 	echo $ret."\n";
-	exit ;
+	exit;
 }
 echo "Syntax Error\n";
 ?>
