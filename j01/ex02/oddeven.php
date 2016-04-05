@@ -10,11 +10,19 @@ function checkoddeven($p1)
 		echo "Le chiffre ".$p1." est Impair\n";
 }
 
-echo "Entrez un nombre: ";
-$read = fgets(STDIN);
-$read = rtrim($read);
-if (is_numeric($read) == "TRUE")
-	checkoddeven($read);
-else
-	echo $read." n'est pas un chiffre\n";
+while(1)
+{
+	echo "Entrez un nombre: ";
+	$read = fgets(STDIN);
+	if (feof(STDIN) == "TRUE")
+	{
+		echo "^D\n";
+		exit;
+	}
+	$read = rtrim($read);
+	if (is_numeric($read) == "TRUE")
+		checkoddeven($read);
+	else
+		echo "'".$read."' n'est pas un chiffre\n";
+}
 ?>
