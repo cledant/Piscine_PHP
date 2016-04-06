@@ -10,16 +10,60 @@ function ft_split($var)
 	return $array;
 }
 
+function ft_uber_sort($a, $b)
+{
+	$sort = "abcdefghijklmnopqrstuvwxyz0123456789 !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+	$sort = str_split($sort, 1);
+	$a = strtolower($a);
+	$b = strtolower($b);
+	$i = 0;
+	while ($a[$i] == $b[$i])
+	{
+		$i += 1;
+	}
+	foreach ($sort as $key => $value)
+	{
+		if ($a[$i] == $value)
+		{
+			$key_a = $key;
+			break;
+		}
+	}
+	foreach ($sort as $key => $value)
+	{
+		if ($b[$i] == $value)
+		{
+			$key_b = $key;
+			break;
+		}
+	}
+	if ($key_a > $key_b)
+		return (1);
+	if ($key_a < $key_b)
+		return (-1);
+	return (0);
+}
+
+if ($argc == 1)
+	exit;
 unset($argv[0]);
 $inc = 1;
 foreach ($argv as $k)
 {
 	$str = trim($k, " ");
 	$array = explode(" ", $str);
-	$array = array_filter($array);
+	$array = array_filter($array, strlen);
 	$argv[$inc] = implode(" ",$array);
 	$inc += 1;
 }
+$exit_1 = 1;
+foreach ($argv as $verif)
+{
+	if (strcmp($verif, "") !== 0)
+		$exit_1 = 0;
+}
+if ($exit_1 === 1)
+	exit;
 $inc = 0;
 foreach ($argv as $k)
 {
@@ -30,40 +74,10 @@ foreach ($argv as $k)
 		$inc += 1;
 	}
 }
-$inc_num = 0;
-$inc_char = 0;
-$inc_other = 0;
+asort($ret);
+usort($ret, "ft_uber_sort");
 foreach($ret as $k)
 {
-	if (is_numeric($k) == TRUE)
-	{
-		$ret_num[$inc_num] = $k;
-		$inc_num += 1;
-	}
-	elseif (ctype_alpha($k) == TRUE)
-	{
-		$ret_char[$inc_char] = $k;
-		$inc_char += 1;
-	}
-	else
-	{
-		$ret_other[$inc_other] = $k;
-		$inc_other += 1;
-	}
-}
-sort($ret_num, SORT_STRING);
-sort($ret_other, SORT_STRING);
-usort($ret_char, strcasecmp);
-foreach($ret_char as $m)
-{
-	echo $m."\n";
-}
-foreach($ret_num as $m)
-{
-	echo $m."\n";
-}
-foreach($ret_other as $m)
-{
-	echo $m."\n";
+	echo $k."\n";
 }
 ?>

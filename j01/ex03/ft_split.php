@@ -1,8 +1,10 @@
 <?php
 function ft_split($var)
 {
+	if (count($var) !== 1)
+		return $array;
 	$array = explode(" ", $var);
-	sort($array, SORT_STRING);
+	asort($array);
 	$keys = array_keys($array, "");
 	foreach ($keys as $k)
 		unset($array[$k]);

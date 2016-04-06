@@ -1,6 +1,8 @@
 <?php
 function ft_is_sort($var)
 {
+	if (count($var) === 0)
+		return TRUE;
 	$inc = 0;
 	foreach ($var as $k)
 	{
@@ -8,9 +10,7 @@ function ft_is_sort($var)
 		$inc += 1;
 	}
 	$inc = 0;
-	print_r($var);
 	sort($var);
-	print_r($var);
 	foreach ($var as $l)
 	{
 		if (strcmp($cpy_array[$inc],$l) != 0)

@@ -21,11 +21,11 @@ foreach ($argv as $k)
 {
 	$str = trim($k, " ");
 	$array = explode(" ", $str);
-	$array = array_filter($array);
+	$array = array_filter($array, strlen);
 	$argv[$inc] = implode("",$array);
 	$str = trim($argv[$inc], " ");
 	$array = explode("\t", $str);
-	$array = array_filter($array);
+	$array = array_filter($array, strlen);
 	$argv[$inc] = implode("",$array);
 	$inc += 1;
 }
@@ -36,6 +36,11 @@ if ($argv[2] == "+")
 }
 else if ($argv[2] == "/")
 {
+	if ($argv[3] == 0)
+	{
+		echo "Incorrect Parameters\n";
+		exit;
+	}
 	$ret = $argv[1] / $argv[3];
 	echo $ret."\n";
 }
@@ -51,6 +56,11 @@ else if ($argv[2] == "*")
 }
 else if ($argv[2] == "%")
 {
+	if ($argv[3] == 0)
+	{
+		echo "Incorrect Parameters\n";
+		exit;
+	}
 	$ret = $argv[1] % $argv[3];
 	echo $ret."\n";
 }

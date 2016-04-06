@@ -10,17 +10,20 @@ function ft_split($var)
 	return $array;
 }
 
+if ($argc == 1)
+	exit;
 $str = $argv[1];
 $str = trim($argv[1], " ");
 $array = explode(" ", $str);
-$array = array_filter($array);
+$array = array_filter($array, strlen);
 $str = implode(" ",$array);
 $count = count($array);
 $inc = 1;
-while ($inc < $count)
+$cpy = $array[0];
+unset($array[0]);
+foreach ($array as $k)
 {
-	echo $array[$inc]." ";
-	$inc += 1;
+	echo $k." ";
 }
-echo $array[0]."\n";
+echo $cpy."\n";
 ?>
