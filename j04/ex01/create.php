@@ -54,3 +54,4 @@ if (strcmp($_POST[submit], "OK") === 0)
 }
 else
 	echo "ERROR\n";
+?>
