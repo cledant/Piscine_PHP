@@ -24,6 +24,12 @@ function send_no()
 }
 
 session_start();
+include("super.php");
+if (isset($_SESSION["ID"]) !== TRUE)
+	header("Location: index.php");
+if (super() !== TRUE)
+	header("Location: index.php");
+
 if (strcmp($_POST[submit], "OK") === 0)
 {
 	if ($_POST["ID"] == NULL)

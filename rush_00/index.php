@@ -1,57 +1,50 @@
 <?PHP
 	session_start();
+	include ("super.php");
+	if (isset($_SESSION["ID"]) && super() === TRUE)
+	{
+		header("Location: super_index.php");
+		exit();
+	}
 ?>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<title>indi-games</title>
-		<style>
-			.body
-			{
-				background-color:#505050;
-			}
-			.header
-			{
-				width:900px;
-				height:150px;
-				background-color:#909090;
-				margin-left:auto;
-				margin-right:auto;
-				border-radius:10px;
-				border:10px;
-				position:relative;
-			}
-			.header_titre
-			{
-				position:absolute;
-				top:10px;
-				left:10px;
-				font-size:200%;
-				text-align:inline-block;
-			}
-		</style>
+		<link rel="stylesheet" type="text/css" href="display.css">	
 	</head>
 	<body class=body>
-		<div class=header>
-			<img class=header src="ressources/entete.jpg" alt=smb>
-			<div class=header_titre>
-				<a href="index.php" alt=titre>TITRE</a>
+		<?PHP
+		include("header.php");
+		?>
+	<div class=produit>
 <?PHP
-				if ($_POST["deco"] === "deconnexion")
-					unset($_SESSION["ID"]);
-				if (isset($_SESSION["ID"]))
+		if (file_exists("bdd/article") && ($tab = unserialize(@file_get_contents("bdd/article"))))
+		{
+			$ok = 0;
+			$i = 0;
+			while($ok < count($tab))
+			{
+				while ($tab[$i]["exist"] === 0)
+					$i++;
+				if (isset($tab[$i]["image"]))
 				{
-					echo "<a href='profil.php' alt=profil>profil</a> ";
-					echo "<form action='index.php' method='post'>";
-					echo "<input type=submit name=deco value='deconnexion'>";
-					echo "</form>";
+					echo "<div class=both><div class=img><img src='".$tab[$i]["image"]."' class=case alt=article1></div>";
+					echo "<form class=voir action='produit.php' method='post'>";
+					echo "<input type=hidden name=id value=".$i." >";
+					echo "<input type=submit name=voir value='voir article'>";
+					echo "</form></div>";
 				}
+				
 				else
-					echo "<a href='connect.php' alt=connect>se connecter</a>";
-?>
-				<a href="panier.php" alt=panier>Panier</a>
-			</div>
-		</div>
-	
+					echo "<div class=img><img src='ressources/default.gif' class=case alt=default></div>";
+				if ((($ok + 1) % 2) == 0)
+					echo "<br>";
+				$i++;
+				$ok++;
+			}
+		}
+?>	
+			</div>	
 	</body>
 </html>

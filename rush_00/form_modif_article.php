@@ -2,15 +2,18 @@
 echo "<HTML><BODY>"."\n";
 if (strcmp($_GET[resp],"OK") === 0)
 {
-	echo "Article ajoute"."\n";
+	echo "Article modifie"."\n";
 	echo "	<BR />"."\n";
 }
 else if (strcmp($_GET[resp],"fail") === 0)
 {
-	echo "Erreur ajout article"."\n";
+	echo "Erreur modification article"."\n";
 	echo "	<BR />"."\n";
 }
-echo "<FORM action=\"add_article.php\" method=\"post\">"."\n";
+
+echo "<FORM action=\"modif_article.php\" method=\"post\">"."\n";
+echo "	ID: <INPUT type=\"text\" name=\"ID\" value=\"\" />"."\n";
+echo "	<BR />"."\n";
 echo "	Nom : <INPUT type=\"text\" name=\"nom\" value=\"\" />"."\n";
 echo "	<BR />"."\n";
 echo "	Image : <INPUT type=\"text\" name=\"image\" value=\"\" />"."\n";

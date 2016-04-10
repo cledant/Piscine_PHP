@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 function send_fail()
 {
 	header("Location: form_add_user.php?resp=fail");
@@ -49,19 +49,23 @@ if (strcmp($_POST[submit], "OK") === 0)
 		}
 		$hash = hash("whirlpool", $_POST[passwd]);
 		$account = array("login"=>$_POST[login], "passwd"=>$hash, "user_type"=> 1,
-			"email"=> $_POST[email], "phone" =>$_POST[phone], "adress" =>$_POST[adress]);
+			"email"=> $_POST[email], "phone" =>$_POST[phone], "adress" =>$_POST[adress], "exist" => 1);
 		$data[$count] = $account;
 		$new_data = serialize($data);
 		file_put_contents("./bdd/user", $new_data);
+		if (!isset($_SESSION["ID"]))
+			$_SESSION["ID"] = $count;
 	}
 	else
 	{
 		$hash = hash("whirlpool", $_POST[passwd]);
 		$account = array("login"=>$_POST[login], "passwd"=>$hash, "user_type"=> 1,
-			"email"=> $_POST[email], "phone" =>$_POST[phone], "adress" =>$_POST[adress]);
+			"email"=> $_POST[email], "phone" =>$_POST[phone], "adress" =>$_POST[adress], "exist" => 1);
 		$tab_data = array(0 => $account);
 		$new_data = serialize($tab_data);
 		file_put_contents("./bdd/user", $new_data);
+		if (!isset($_SESSION["ID"]))
+		   $_SESSION["ID"] = 0;
 	}
 	send_ok();
 }

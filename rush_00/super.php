@@ -10,8 +10,9 @@ function super()
 	foreach ($tab as $key => $value)
 	{
 		if (strcmp($key, $_SESSION["ID"]) === 0)
-			if ($value["user_type"] == 1)
+			if ($value["user_type"] === 0)
 				return TRUE;
 	}
 	return FALSE;
 }
+?>

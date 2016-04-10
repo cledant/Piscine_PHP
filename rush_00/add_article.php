@@ -12,12 +12,17 @@ function send_ok()
 }
 
 session_start();
+include("super.php");
+if (isset($_SESSION["ID"]) !== TRUE)
+	header("Location: index.php");
+if (super() !== TRUE)
+	header("Location: index.php");
 if (strcmp($_POST[submit], "OK") == 0)
 {
 	if (!(file_exists("bdd")))
 		mkdir("bdd", 0700, TRUE);
 	if ($_POST["nom"] == NULL || $_POST["image"] == NULL || $_POST["description"] == NULL ||
-		$_POST["categories"] || $_POST["stock"] == NULL)
+		$_POST["categories"] || $_POST["price"] == NULL || $_POST["stock"] == NULL)
 	{
 		send_fail();
 	}
@@ -26,9 +31,10 @@ if (strcmp($_POST[submit], "OK") == 0)
 	$article = array(
 		"nom" => $_POST["nom"],
 		"image" => $_POST["image"],
-		"descritption"=> $_POST["description"],
+		"description"=> $_POST["description"],
 		"categories" => $ex_cat,//TAB
 		"stock" => $_POST["stock"],
+		"price" => $_POST["price"],
 		"exist" => 1);
 	// si le fichier 'article' n'existe pas //
 	if (@file_get_contents("bdd/article") === FALSE)

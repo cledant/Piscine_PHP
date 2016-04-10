@@ -21,7 +21,7 @@ if (strcmp($_POST[submit], "OK") === 0)
 	if (!file_exists("bdd"))
 		mkdir("bdd", 0700, TRUE);
 	$categorie = array(
-		"nom" => $_POST["nom"],
+		"nom" => $_POST["categorie"],
 		"exist" => 1);
 	// Si le fichier 'categorie' n'existe pas //
 	if (!(@file_get_contents("bdd/categorie")))

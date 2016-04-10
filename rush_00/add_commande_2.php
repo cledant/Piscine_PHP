@@ -1,31 +1,30 @@
 <?PHP
 function send_ok()
 {
-	header("location: form_add_commande.php?resp=OK");
+	header("location: panier.php?resp=OK");
 	exit;
 }
 
 function send_fail()
 {
-	header("location: form_add_commande.php?resp=fail");
+	header("location: panier.php?resp=fail");
 	exit;
 }
-
-session_start();
-if (strcmp($_POST[submit], "OK") === 0)
+function redirige($iduser, $idart, $total)
 {
-	if ($_POST["IDuser"] == NULL || $_POST["IDarticles"] == NULL || $_POST["montant"] == NULL)
+	session_start();
+	if ($iduser == NULL || $idart == NULL || $total == NULL)
 	{
-			send_fail();
+		send_fail();
 	}
-	$val_article = explode(";",$_POST["IDarticles"]);
+	$val_article = explode(";",$idart);
 	$val_article = array_filter($val_article, strlen);
 	if (!(file_exists("bdd")))
 		mkdir("bdd", 0700, TRUE);
 	$article = array(
-		"IDuser" => $_POST["IDuser"],
+		"IDuser" => $iduser,
 		"IDarticles" => $val_article,//TAB
-		"montant"=> $_POST["montant"],
+		"montant"=> $total,
 		"etat" => "VALIDATION",
 		"exist" => 1);
 	// si le fichier 'article' n'existe pas //
@@ -50,6 +49,4 @@ if (strcmp($_POST[submit], "OK") === 0)
 	}
 	send_ok();
 }
-else
-	send_fail();
 ?>

@@ -13,18 +13,27 @@
 			echo "ERROR1\n";
 			return 0;
 		}
-		$hash = hash(Whirlpool, $_POST["passwd"]);
+		$hash = hash("Whirlpool", $_POST["passwd"]);
 		foreach($tab as $key => $value)
 		{
-			if (strcmp($value["login"], $_POST["login"] === 0))
+			if ($value["login"] === $_POST["login"])
 			{
+				
 				if (strcmp($value["passwd"], $hash) === 0)
 				{
-					$_SESSION["ID"] = $key;
-					header("Location: index.php");
-					return 1;
+					if ($value["exist"] === 1)
+					{
+						$_SESSION["ID"] = $key;
+						header("Location: index.php");
+						return 1;
+					}
+					else
+					{
+						echo "Votre compte a été supprimé\n";
+						return 0;
+					}
 				}
-				else
+				else if (strcmp($value["passwd"], $hash) !== 0)
 				{
 					echo "Wrong Password\n";
 					return 0;
@@ -36,31 +45,13 @@
 <html>
 	<head>
 		<title="Identifcation indi-games">
-		<style>
-			.body {background-color:#505050;}
-			.formulaire
-			{
-				width:50%;
-				margin-left:auto;
-				margin-right:auto;
-			}
-			.header
-			{
-				width:900px;
-				height:150px;
-				background-color:#909090;
-				margin-left:auto;
-				margin-right:auto;
-				border-radius:10px;
-				position:relative;
-			}
-		</style>
+		<link rel="stylesheet" type="text/css" href="display.css">
 	</head>
 	<body class=body>
 	<div class=header>
-		<img class=header src="ressources/entete.jpg" alt=smb>
+		<img class=header src="ressources/header.png" alt=smb>
 		<div class=header_titre>
-			<a href="index.php" alt=titre>TITRE</a>
+			<a href="index.php" class=a alt=titre>TITRE</a>
 		</div>
 	</div>	
 		<form action="connect.php" method="post" class=formulaire>
@@ -70,7 +61,9 @@
 				Mot de passe:<input type=text autocomplete="off" name="passwd"><br>
 				<input type=submit name=submit value="Ok">
 			</fieldset>
-			<a href="form_add_user.php" alt=inscription>Inscription</a>
 		</form>
+		<?PHP
+		include("form_add_user.php");
+		?>
 	</body>
 </html>
