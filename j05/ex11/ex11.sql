@@ -1,0 +1,1 @@
+SELECT UCASE(fiche_personne.nom) AS 'NOM', fiche_personne.prenom, prix FROM db_cledant.fiche_personne INNER JOIN db_cledant.membre ON fiche_personne.id_perso = membre.id_fiche_perso INNER JOIN db_cledant.abonnement ON membre.id_abo = abonnement.id_abo WHERE abonnement.prix > 42 ORDER BY fiche_personne.nom, fiche_personne.prenom ASC;
