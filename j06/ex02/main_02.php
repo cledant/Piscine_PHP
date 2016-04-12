@@ -24,7 +24,6 @@ $vtxX = new Vertex( array( 'x' => 1.0, 'y' => 0.0, 'z' => 0.0 ) );
 $vtxY = new Vertex( array( 'x' => 0.0, 'y' => 1.0, 'z' => 0.0 ) );
 $vtxZ = new Vertex( array( 'x' => 0.0, 'y' => 0.0, 'z' => 1.0 ) );
 
-echo "test\n";
 $vtcXunit = new Vector( array( 'orig' => $vtxO, 'dest' => $vtxX ) );
 $vtcYunit = new Vector( array( 'orig' => $vtxO, 'dest' => $vtxY ) );
 $vtcZunit = new Vector( array( 'orig' => $vtxO, 'dest' => $vtxZ ) );
@@ -38,7 +37,6 @@ Vertex::$verbose = True;
 $vtc1  = new Vector( array( 'dest' => $dest1 ) );
 Vertex::$verbose = False;
 
-echo "test2\n";
 $orig2 = new Vertex( array( 'x' => 23.87, 'y' => -37.95, 'z' => 78.34 ) );
 $dest2 = new Vertex( array( 'x' => -12.34, 'y' => 23.45, 'z' => -34.56 ) );
 $vtc2  = new Vector( array( 'orig' => $orig2, 'dest' => $dest2 ) );

@@ -34,15 +34,15 @@ Class Vector
  
 	public function __construct(array $kwargs)
 	{
-		$this->_dest = $kwargs["dest"];
+		$dest = $kwargs["dest"];
 		if (array_key_exists("orig", $kwargs))
-			$this->_orig = $kwargs["orig"];
+			$orig = $kwargs["orig"];
 		else
-			$this->_orig = new Vertex( array( 'x' => 0, 'y' => 0,
+			$orig = new Vertex( array( 'x' => 0, 'y' => 0,
 				'z' => 0, 'w' => 1) );
-		$this->_x = $this->_dest->getx() - $this->_orig->getx();
-		$this->_y = $this->_dest->gety() - $this->_orig->gety();
-		$this->_z = $this->_dest->getz() - $this->_orig->getz();
+		$this->_x = $dest->getx() - $orig->getx();
+		$this->_y = $dest->gety() - $orig->gety();
+		$this->_z = $dest->getz() - $orig->getz();
 		settype($this->_x, "float");
 		settype($this->_y, "float");
 		settype($this->_z, "float");
@@ -70,14 +70,16 @@ Class Vector
 
 	public function normalize()
 	{
-		$this->_norm_vec = new Vector (array("dest" => $this->_dest, "orig" => $this->_orig));
-		$this->_clone_norm_vec = clone $this->_norm_vec;
-		$this->_clone_norm_vec->_x /= magnitude();
-		$this->_clone_norm_vec->_y /= magnitude();
-		$this->_clone_norm_vec->_z /= magnitude();
+		$mag = sqrt($this->_x * $this->_x + $this->_y * $this->_y + $this->_z * $this->_z);
+		$x = $this->_x / $mag;
+		$y = $this->_y / $mag;
+		$z = $this->_z / $mag;
+		$tmp = new Vertex(array ('x' => $x, 'y' => $y, 'z' => $z));
+		$this->_clone_norm_vec = new Vector( array( 'dest' => $tmp));
+		return ($this->_clone_norm_vec);
 	}
 
-/*	public function add(Vector $rhs)
+	public function add(Vector $rhs)
 	{
 		$this->_norm_vec = new Vector (array("dest" => $this->_dest, "orig" => $this->_orig));
 		$this->_clone_norm_vec = clone $this->_norm_vec;
@@ -117,7 +119,7 @@ Class Vector
 		return ($this->_clone_norm_vec);
 	}
 
-	public function dotProduct$(Vector $rhs)
+	public function dotProduct(Vector $rhs)
 	{
 		$this->_dot_product = $this->_x * $rhs->getx() + $this->_y * $rhs->gety() + 
 			$this->_z * $rhs->getz();
@@ -125,16 +127,16 @@ Class Vector
 		return ($this->_dot_product);
 	}
 
-	public function cos$(Vector $rhs)
+	public function cos(Vector $rhs)
 	{
 		$this->_dot_product = $this->_x * $rhs->getx() + $this->_y * $rhs->gety() + 
 			$this->_z * $rhs->getz();
-		$_cos = acos($this->_dot_product / (self->normalize() * $rhs->normalize()));
+		$_cos = acos($this->_dot_product / (self::normalize() * $rhs->normalize()));
 		settype($this->_dot_product);
 		return ($this->_dot_product);
 	}
 
-	public function crossProduct$(Vector $rhs)
+	public function crossProduct(Vector $rhs)
 	{
 		$this->_norm_vec = new Vector (array("dest" => $this->_dest, "orig" => $this->_orig));
 		$this->_clone_norm_vec = clone $this->_norm_vec;
@@ -142,7 +144,7 @@ Class Vector
 		$this->_clone_norm_vec->_y = $this->_z * $rhs->getx() - $this->_x * $rhs->getz();
 		$this->_clone_norm_vec->_z = $this->_x * $rhs->gety() - $this->_y * $rhs->getx();
 		return ($this->_dot_product);
-	}*/
+	}
 
 	public function getx()
 	{
@@ -194,7 +196,7 @@ Class Vector
 			printf("%.2f", $this->_z);
 			echo ", w: ";
 			printf("%.2f", $this->_w);
-			echo ") destructed\n";
+			echo " ) destructed\n";
 		}
 	}
  }
