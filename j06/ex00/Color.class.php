@@ -50,11 +50,11 @@ Class Color
 		settype($this->blue, "integer");
 		if (self::$verbose === TRUE)
 		{
-			$this->red = str_pad($this->red, 3 , " ", STR_PAD_LEFT);
-			$this->green = str_pad($this->green, 3 , " ", STR_PAD_LEFT);
-			$this->blue = str_pad($this->blue, 3 , " ", STR_PAD_LEFT);
-			echo "COLOR( red: ".$this->red.", green: ".$this->green.", blue: "
-				.$this->blue." ) constructed.\n";
+			$tmp1 = str_pad($this->red, 3 , " ", STR_PAD_LEFT);
+			$tmp2 = str_pad($this->green, 3 , " ", STR_PAD_LEFT);
+			$tmp3 = str_pad($this->blue, 3 , " ", STR_PAD_LEFT);
+			echo "COLOR( red: ".$tmp1.", green: ".$tmp2.", blue: "
+				.$tmp3." ) constructed.\n";
 		}
 	}
 
@@ -87,22 +87,22 @@ Class Color
 
 	public function __toString()
 	{
-		$this->red = str_pad($this->red, 3 , " ", STR_PAD_LEFT);
-		$this->green = str_pad($this->green, 3 , " ", STR_PAD_LEFT);
-		$this->blue = str_pad($this->blue, 3 , " ", STR_PAD_LEFT);
-		return "COLOR( red: ".$this->red.", green: ".$this->green.", blue: "
-			.$this->blue." )";
+		$tmp1 = str_pad($this->red, 3 , " ", STR_PAD_LEFT);
+		$tmp2 = str_pad($this->green, 3 , " ", STR_PAD_LEFT);
+		$tmp3 = str_pad($this->blue, 3 , " ", STR_PAD_LEFT);
+		return "COLOR( red: ".$tmp1.", green: ".$tmp2.", blue: "
+			.$tmp3." )";
 	}
 
 	public function __destruct()
 	{
-		if (self::$verbose == TRUE)
+		if (self::$verbose === TRUE)
 		{
-			$this->red = str_pad($this->red, 3 , " ", STR_PAD_LEFT);
-			$this->green = str_pad($this->green, 3 , " ", STR_PAD_LEFT);
-			$this->blue = str_pad($this->blue, 3 , " ", STR_PAD_LEFT);
-			echo "COLOR( red: ".$this->red.", green: ".$this->green.", blue: "
-				.$this->blue." ) destructed.\n";
+			$tmp1 = str_pad($this->red, 3 , " ", STR_PAD_LEFT);
+			$tmp2 = str_pad($this->green, 3 , " ", STR_PAD_LEFT);
+			$tmp3 = str_pad($this->blue, 3 , " ", STR_PAD_LEFT);
+			echo "COLOR( red: ".$tmp1.", green: ".$tmp2.", blue: "
+				.$tmp3." ) destructed.\n";
 		}
 	}
  }
