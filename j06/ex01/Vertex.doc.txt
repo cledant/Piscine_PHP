@@ -1,0 +1,22 @@
+
+<- Color ----------------------------------------------------------------------
+The Color class handles the "x y z" coordinates, the "w" scale factor
+and "color" as a color class.
+
+An instance can be contructed from either as follow:
+new Vertex( array( 'x' => 10, 'y' => 10, 'z' => 10, 'w' => 2, 'color' => $color));
+with $color being and earlier created Color class.
+
+"w" and "color" are optional to create this class.
+
+The class provides the following methods :
+
+Vertex   setx($coord);
+This function can set 'x'.
+
+Vertex getx()
+Displays the 'x' value of the class;
+
+This function are also available for y z w and color;
+
+---------------------------------------------------------------------- Color ->
