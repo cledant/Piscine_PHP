@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+	<head>
+		<title>It's over 9000</title>
+		<style>
+		</style>
+	</head>
+	<body>
+		<input type=text id="left">
+		<select id="middle">
+			<option value="1">+</option>
+			<option value="2">-</option>
+			<option value="3">*</option>
+			<option value="4">/</option>
+			<option value="5">%</option>
+		</select>
+		<input type=text id="right">
+		<input type=submit id="button" value="Try me" onclick="calculate()">
+		<script>
+			var num1 = 0;
+			var num2 = 0;
+			var sign = 1;
+			var result = 0;
+			
+			function popup()
+			{
+				setInterval(function(){alert("Please, use me...");}, 30000);
+			}
+
+			function calculate()
+			{
+				var doc1 = document.getElementById("left");
+				var doc2 = document.getElementById("middle");
+				var doc3 = document.getElementById("right");
+				num1 = parseInt(doc1.value);
+				num2 = parseInt(doc3.value);
+				sign = parseInt(doc2.value);
+				if (isNaN(num1) == true || num1 < 0)
+				{
+					alert("Error :(");
+					return;
+				}
+				if (isNaN(num2) == true || num2 < 0)
+				{
+					alert("Error :(");
+					return;
+				}
+				if (num2 == 0 && (sign == 4 || sign == 5))
+				{
+					alert("It's over 9000!");
+					console.log("It's over 9000!");
+					return;
+				}
+				if (sign == 1)
+					result = num1 + num2;
+				else if (sign == 2)
+					result = num1 - num2;
+				else if (sign == 3)
+					result = num1 * num2;
+				else if (sign == 4)
+					result = num1 / num2;
+				else if (sign == 5)
+					result = num1 % num2;
+				alert(result);
+				console.log(result);
+			}
+
+			popup();
+		</script>
+	</body>
+</html>
